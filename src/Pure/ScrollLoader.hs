@@ -1,7 +1,7 @@
 {-# LANGUAGE RecordWildCards, OverloadedStrings #-}
 module Pure.ScrollLoader where
 
-import Pure hiding (features)
+import Pure hiding (features,key)
 
 import Control.Monad
 import Data.Typeable
@@ -47,7 +47,7 @@ instance (Eq key, Typeable key, Typeable view, Typeable response) => Pure (Scrol
                         load True
                     , receive = \newprops oldstate -> do 
                         oldprops <- ask self
-                        if offset newprops /= offset oldprops || key newprops /= key oldprops 
+                        if offset newprops /= offset oldprops || key newprops /= key oldprops
                           then do
                             load False
                             return (True,offset newprops,count newprops,Nothing) 
