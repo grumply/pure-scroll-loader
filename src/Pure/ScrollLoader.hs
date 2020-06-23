@@ -26,7 +26,7 @@ data ScrollLoader key view response = ScrollLoader
 
 instance (Eq key, Typeable key, Typeable view, Typeable response) => Pure (ScrollLoader key view response) where
     view =
-        ComponentIO $ \self ->
+        Component $ \self ->
             let
                 upd = modify_ self . const
 
